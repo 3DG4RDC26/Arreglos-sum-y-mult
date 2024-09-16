@@ -1,0 +1,10 @@
+C:\Users\edgar\OneDrive\Documentos\C#\Arreglos\Ejercicio 3\obj\Debug\Ejercicio 3.csproj.AssemblyReference.cache
+C:\Users\edgar\OneDrive\Documentos\C#\Arreglos\Ejercicio 3\obj\Debug\Ejercicio_3.Form1.resources
+C:\Users\edgar\OneDrive\Documentos\C#\Arreglos\Ejercicio 3\obj\Debug\Ejercicio_3.Properties.Resources.resources
+C:\Users\edgar\OneDrive\Documentos\C#\Arreglos\Ejercicio 3\obj\Debug\Ejercicio 3.csproj.GenerateResource.cache
+C:\Users\edgar\OneDrive\Documentos\C#\Arreglos\Ejercicio 3\obj\Debug\Ejercicio 3.csproj.CoreCompileInputs.cache
+C:\Users\edgar\OneDrive\Documentos\C#\Arreglos\Ejercicio 3\bin\Debug\Ejercicio 3.exe.config
+C:\Users\edgar\OneDrive\Documentos\C#\Arreglos\Ejercicio 3\bin\Debug\Ejercicio 3.exe
+C:\Users\edgar\OneDrive\Documentos\C#\Arreglos\Ejercicio 3\bin\Debug\Ejercicio 3.pdb
+C:\Users\edgar\OneDrive\Documentos\C#\Arreglos\Ejercicio 3\obj\Debug\Ejercicio 3.exe
+C:\Users\edgar\OneDrive\Documentos\C#\Arreglos\Ejercicio 3\obj\Debug\Ejercicio 3.pdb
