@@ -13,90 +13,84 @@ namespace Ejercicio_3
 {
     public partial class Form1 : Form
     {
-        private Ventas ventas;
-        private const int numVendedores = 4;
-        private const int numProductos = 5;
+        // Lista para almacenar todas las ventas del mes
+        private List<Venta> ventas = new List<Venta>();
 
         public Form1()
         {
             InitializeComponent();
-            ventas = new Ventas(numProductos, numVendedores);
         }
 
-        private void btnRegistrarVenta_Click(object sender, EventArgs e)
+        private void btnAgregarVenta_Click(object sender, EventArgs e)
         {
-            // Aquí asumimos que txtProducto, txtVendedor y txtMonto son TextBox en el formulario
-            if (int.TryParse(txtProducto.Text, out int producto) &&
-                int.TryParse(txtVendedor.Text, out int vendedor) &&
-                double.TryParse(txtMonto.Text, out double monto))
+            // Obtener los valores ingresados
+            int vendedor = int.Parse(txtVendedor.Text);
+            int producto = int.Parse(txtProducto.Text);
+            float valorVenta = float.Parse(txtVenta.Text);
+
+            // Validar que los valores ingresados estén dentro del rango permitido
+            if (vendedor >= 1 && vendedor <= 4 && producto >= 1 && producto <= 5)
             {
-                ventas.RegistrarVenta(producto, vendedor, monto);
-                MessageBox.Show("Venta registrada correctamente.");
+                // Crear una nueva venta y agregarla a la lista de ventas
+                Venta nuevaVenta = new Venta(vendedor, producto, valorVenta);
+                ventas.Add(nuevaVenta);
+
+                MessageBox.Show("Venta agregada exitosamente.");
             }
             else
             {
-                MessageBox.Show("Por favor, ingrese valores válidos.");
+                MessageBox.Show("Error: Vendedor o producto fuera de rango.");
             }
+
+            // Limpiar campos de texto
+            txtVendedor.Clear();
+            txtProducto.Clear();
+            txtVenta.Clear();
         }
 
-        private void btnMostrarResultados_Click(object sender, EventArgs e)
+        private void btnMostrarReporte_Click(object sender, EventArgs e)
         {
-            double[,] ventasData = ventas.ObtenerVentas();
-            double[] totalesPorProducto = ventas.ObtenerTotalesPorProducto();
-            double[] totalesPorVendedor = ventas.ObtenerTotalesPorVendedor();
+            // Arreglo para resumir las ventas: [producto, vendedor]
+            float[,] resumenVentas = new float[5, 4];
 
-            // Limpiar el DataGridView antes de llenar con nuevos datos
-            dataGridViewResultados.Rows.Clear();
-            dataGridViewResultados.Columns.Clear();
-
-            // Agregar columnas para los vendedores
-            for (int i = 1; i <= numVendedores; i++)
+            // Sumar las ventas por vendedor y producto
+            foreach (Venta venta in ventas)
             {
-                dataGridViewResultados.Columns.Add($"Vendedor{i}", $"Vendedor {i}");
+                resumenVentas[venta.Producto - 1, venta.Vendedor - 1] += venta.ValorVenta;
             }
 
-            // Agregar columna para los totales por producto
-            dataGridViewResultados.Columns.Add("TotalProducto", "Total Producto");
+            // Mostrar el reporte en el ListBox
+            lstReporte.Items.Clear();
+            lstReporte.Items.Add("Producto/Vendedor   1       2       3       4   | Total Producto");
 
-            // Agregar filas para cada producto
-            for (int i = 0; i < numProductos; i++)
+            for (int producto = 0; producto < 5; producto++)
             {
-                var row = new DataGridViewRow();
-                row.CreateCells(dataGridViewResultados);
+                float totalProducto = 0;
+                string linea = $"Producto {producto + 1}       ";
 
-                for (int j = 0; j < numVendedores; j++)
+                for (int vendedor = 0; vendedor < 4; vendedor++)
                 {
-                    row.Cells[j].Value = ventasData[i, j].ToString("F2");
+                    linea += $"{resumenVentas[producto, vendedor],8:F2} ";
+                    totalProducto += resumenVentas[producto, vendedor];
                 }
 
-                row.Cells[numVendedores].Value = totalesPorProducto[i].ToString("F2");
-                dataGridViewResultados.Rows.Add(row);
+                linea += $"| {totalProducto,8:F2}";
+                lstReporte.Items.Add(linea);
             }
 
-            // Agregar fila para los totales por vendedor
-            var totalRow = new DataGridViewRow();
-            totalRow.CreateCells(dataGridViewResultados, "Total Vendedor");
-
-            for (int i = 0; i < numVendedores; i++)
+            // Totales por vendedor
+            lstReporte.Items.Add("----------------------------------------------------------");
+            string lineaTotales = "Total Vendedor     ";
+            for (int vendedor = 0; vendedor < 4; vendedor++)
             {
-                totalRow.Cells[i].Value = totalesPorVendedor[i].ToString("F2");
+                float totalVendedor = 0;
+                for (int producto = 0; producto < 5; producto++)
+                {
+                    totalVendedor += resumenVentas[producto, vendedor];
+                }
+                lineaTotales += $"{totalVendedor,8:F2} ";
             }
-
-            totalRow.Cells[numVendedores].Value = ""; // Espacio para total general
-            dataGridViewResultados.Rows.Add(totalRow);
-
-            // Agregar fila para el total general
-            double totalGeneral = totalesPorProducto.Sum();
-            var totalGeneralRow = new DataGridViewRow();
-            totalGeneralRow.CreateCells(dataGridViewResultados, "Total General");
-
-            for (int i = 0; i < numVendedores; i++)
-            {
-                totalGeneralRow.Cells[i].Value = "";
-            }
-
-            totalGeneralRow.Cells[numVendedores].Value = totalGeneral.ToString("F2");
-            dataGridViewResultados.Rows.Add(totalGeneralRow);
+            lstReporte.Items.Add(lineaTotales);
         }
     }
 }
