@@ -6,30 +6,25 @@ using System.Threading.Tasks;
 
 namespace Ejercicio_1.models
 {
-    internal class TirarDados
+    public class TirarDados
     {
-        private int[,] resultDados;
-        public TirarDados()
-        {
-            resultDados = new int[2, 1];
-        }
-        public void Lanzar()
+        private int[] conteoSumas = new int[11]; // Array para contar las sumas (de 2 a 12)
+
+        // Método para simular una tirada de dos dados
+        public (int dado1, int dado2, int suma) Tirar()
         {
             Random rand = new Random();
-            resultDados[0, 0] = rand.Next(1, 7);
-            resultDados[1, 0] = rand.Next(1, 7);
+            int dado1 = rand.Next(1, 7); // Lanza el primer dado (1 a 6)
+            int dado2 = rand.Next(1, 7); // Lanza el segundo dado (1 a 6)
+            int suma = dado1 + dado2;    // Calcula la suma
+
+            conteoSumas[suma - 2]++; // Incrementa el conteo para la suma correspondiente
+            return (dado1, dado2, suma); // Devuelve los valores de los dados y la suma
         }
-        public int ResultDado1()
+
+        public int[] ObtenerConteoSumas()
         {
-            return resultDados[0, 0];
-        }
-        public int ResultDado2()
-        {
-            return resultDados[1, 0];
-        }
-        public int SumaDados()
-        {
-            return resultDados[0, 0] + resultDados[1, 0];
+            return conteoSumas;
         }
     }
 }

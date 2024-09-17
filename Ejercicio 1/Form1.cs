@@ -14,19 +14,49 @@ namespace Ejercicio_1
 {
     public partial class Form1 : Form
     {
-        private TirarDados resultDados;
+        private TirarDados tirarDados;
+
         public Form1()
         {
             InitializeComponent();
-            resultDados = new TirarDados();
+            tirarDados = new TirarDados(); // Inicializa la clase TirarDados
         }
 
-        private void btnTirarDados_Click(object sender, EventArgs e)
+        // Este método se ejecuta cuando el usuario hace clic en el botón "Lanzar Dados"
+        private void btnLanzarDados_Click(object sender, EventArgs e)
         {
-            resultDados.Lanzar();
-            lblDado1.Text = "Dado 1: " + resultDados.ResultDado1().ToString();
-            lblDado2.Text = "Dado 2: " + resultDados.ResultDado2().ToString();
-            lblResult.Text = "Suma: " + resultDados.SumaDados().ToString();
+            // Realiza una tirada
+            var (dado1, dado2, suma) = tirarDados.Tirar();
+
+            // Actualiza las etiquetas con los resultados
+            lblDado1.Text = $"Dado 1: {dado1}";
+            lblDado2.Text = $"Dado 2: {dado2}";
+            lblSuma.Text = $"Suma: {suma}";
+
+            // Mostrar el conteo acumulado de sumas
+            MostrarConteoSumas();
+        }
+
+        // Método para mostrar el conteo acumulado de las sumas
+        private void MostrarConteoSumas()
+        {
+            int[] conteoSumas = tirarDados.ObtenerConteoSumas();
+
+            // Limpiar el ListBox antes de mostrar los conteos actualizados
+            lstConteoSumas.Items.Clear();
+            lstConteoSumas.Items.Add("Suma\tCantidad");
+
+            for (int i = 0; i < conteoSumas.Length; i++)
+            {
+                int suma = i + 2;
+                int cantidad = conteoSumas[i];
+                lstConteoSumas.Items.Add($"{suma}\t{cantidad}");
+            }
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

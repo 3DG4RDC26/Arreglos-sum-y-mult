@@ -2,15 +2,13 @@
 {
     partial class Form1
     {
-        /// <summary>
-        /// Variable del diseñador necesaria.
-        /// </summary>
         private System.ComponentModel.IContainer components = null;
+        private System.Windows.Forms.ListBox lstConteoSumas;
+        private System.Windows.Forms.Button btnLanzarDados;
+        private System.Windows.Forms.Label lblDado1;
+        private System.Windows.Forms.Label lblDado2;
+        private System.Windows.Forms.Label lblSuma;
 
-        /// <summary>
-        /// Limpiar los recursos que se estén usando.
-        /// </summary>
-        /// <param name="disposing">true si los recursos administrados se deben desechar; false en caso contrario.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -20,100 +18,92 @@
             base.Dispose(disposing);
         }
 
-        #region Código generado por el Diseñador de Windows Forms
-
-        /// <summary>
-        /// Método necesario para admitir el Diseñador. No se puede modificar
-        /// el contenido de este método con el editor de código.
-        /// </summary>
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            this.btnTirarDados = new System.Windows.Forms.Button();
+            this.lstConteoSumas = new System.Windows.Forms.ListBox();
+            this.btnLanzarDados = new System.Windows.Forms.Button();
             this.lblDado1 = new System.Windows.Forms.Label();
             this.lblDado2 = new System.Windows.Forms.Label();
-            this.lblResult = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
+            this.lblSuma = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // btnTirarDados
+            // lstConteoSumas
             // 
-            this.btnTirarDados.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btnTirarDados.Image = global::Ejercicio_1.Properties.Resources.dado;
-            this.btnTirarDados.Location = new System.Drawing.Point(91, 118);
-            this.btnTirarDados.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.btnTirarDados.Name = "btnTirarDados";
-            this.btnTirarDados.Size = new System.Drawing.Size(61, 42);
-            this.btnTirarDados.TabIndex = 0;
-            this.btnTirarDados.UseVisualStyleBackColor = true;
-            this.btnTirarDados.Click += new System.EventHandler(this.btnTirarDados_Click);
+            this.lstConteoSumas.FormattingEnabled = true;
+            this.lstConteoSumas.Location = new System.Drawing.Point(12, 154);
+            this.lstConteoSumas.Name = "lstConteoSumas";
+            this.lstConteoSumas.Size = new System.Drawing.Size(208, 173);
+            this.lstConteoSumas.TabIndex = 1;
+            // 
+            // btnLanzarDados
+            // 
+            this.btnLanzarDados.Image = global::Ejercicio_1.Properties.Resources.dado;
+            this.btnLanzarDados.Location = new System.Drawing.Point(56, 100);
+            this.btnLanzarDados.Name = "btnLanzarDados";
+            this.btnLanzarDados.Size = new System.Drawing.Size(101, 35);
+            this.btnLanzarDados.TabIndex = 2;
+            this.btnLanzarDados.UseVisualStyleBackColor = true;
+            this.btnLanzarDados.Click += new System.EventHandler(this.btnLanzarDados_Click);
             // 
             // lblDado1
             // 
             this.lblDado1.AutoSize = true;
             this.lblDado1.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDado1.Location = new System.Drawing.Point(51, 49);
+            this.lblDado1.Location = new System.Drawing.Point(27, 35);
             this.lblDado1.Name = "lblDado1";
-            this.lblDado1.Size = new System.Drawing.Size(48, 15);
-            this.lblDado1.TabIndex = 1;
-            this.lblDado1.Text = "Dado 1:";
+            this.lblDado1.Size = new System.Drawing.Size(51, 15);
+            this.lblDado1.TabIndex = 3;
+            this.lblDado1.Text = "Dado 1: ";
             // 
             // lblDado2
             // 
             this.lblDado2.AutoSize = true;
-            this.lblDado2.ForeColor = System.Drawing.Color.Black;
-            this.lblDado2.Location = new System.Drawing.Point(134, 49);
+            this.lblDado2.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDado2.Location = new System.Drawing.Point(135, 37);
             this.lblDado2.Name = "lblDado2";
-            this.lblDado2.Size = new System.Drawing.Size(48, 15);
-            this.lblDado2.TabIndex = 2;
-            this.lblDado2.Text = "Dado 2:";
+            this.lblDado2.Size = new System.Drawing.Size(51, 15);
+            this.lblDado2.TabIndex = 4;
+            this.lblDado2.Text = "Dado 2: ";
             // 
-            // lblResult
+            // lblSuma
             // 
-            this.lblResult.AutoSize = true;
-            this.lblResult.Location = new System.Drawing.Point(88, 86);
-            this.lblResult.Name = "lblResult";
-            this.lblResult.Size = new System.Drawing.Size(64, 15);
-            this.lblResult.TabIndex = 3;
-            this.lblResult.Text = "Resultado:";
+            this.lblSuma.AutoSize = true;
+            this.lblSuma.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSuma.Location = new System.Drawing.Point(78, 72);
+            this.lblSuma.Name = "lblSuma";
+            this.lblSuma.Size = new System.Drawing.Size(67, 15);
+            this.lblSuma.TabIndex = 5;
+            this.lblSuma.Text = "Resultado: ";
             // 
-            // label4
+            // label1
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(6, 132);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(78, 15);
-            this.label4.TabIndex = 4;
-            this.label4.Text = "Lanzar dados";
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(89, 138);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(39, 13);
+            this.label1.TabIndex = 6;
+            this.label1.Text = "Lanzar";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(309, 231);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.lblResult);
+            this.ClientSize = new System.Drawing.Size(247, 360);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lblSuma);
             this.Controls.Add(this.lblDado2);
             this.Controls.Add(this.lblDado1);
-            this.Controls.Add(this.btnTirarDados);
-            this.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.Controls.Add(this.btnLanzarDados);
+            this.Controls.Add(this.lstConteoSumas);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.Name = "Form1";
-            this.Text = "Girar Dados";
+            this.Text = "Simulador de Dados";
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
-        #endregion
-
-        private System.Windows.Forms.Button btnTirarDados;
-        private System.Windows.Forms.Label lblDado1;
-        private System.Windows.Forms.Label lblDado2;
-        private System.Windows.Forms.Label lblResult;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label1;
     }
 }
-
